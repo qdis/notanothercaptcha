@@ -60,7 +60,11 @@ class MainController {
         var valid = captchaService.validate("system", "secret", sampleForm.nocId, sampleForm.nocResponse);
         logger.info { "Valid : ${valid} "}
         model.addAttribute("valid", valid)
-        return "sample"
+        if(valid) {
+            return "sample"
+        }else{
+            return "redirect:/sample"
+        }
     }
 
     @GetMapping("/sample")

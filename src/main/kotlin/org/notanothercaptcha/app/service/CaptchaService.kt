@@ -71,13 +71,16 @@ class CaptchaService {
         logger.info { "Generated captcha: $code with id ${id}" }
 
         val base64STR = "data:image\\/jpg;base64," + Base64.getEncoder().encodeToString(QRCode.from(code).to(ImageType.JPG).stream().toByteArray())
-        return captchaRepo.save(Captcha(id, clientId, code, base64STR))
+        return captchaRepo.save(Captcha(id, clientId, code, base64STR, System.currentTimeMillis()))
 
     }
 
     @Scheduled(fixedRate = 10000)
     fun deleteOld() {
 
+        logger.info { "Deleting old Captchas" }
+        //TODO this needs to be prettier :)
+        captchaRepo.deleteAll().block();
     }
 
 
