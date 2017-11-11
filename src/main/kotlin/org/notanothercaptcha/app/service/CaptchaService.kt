@@ -75,7 +75,7 @@ class CaptchaService {
 
     }
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 100000)
     fun deleteOld() {
 
         logger.info { "Deleting old Captchas" }
