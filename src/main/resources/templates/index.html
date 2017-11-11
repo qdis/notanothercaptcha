@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Not Another Captcha!</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</head>
+<body>
+<nav class="light-blue lighten-1" role="navigation">
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <form action="#" th:action="@{/logout}" method="post" id="lform">
+                <ul class="right hide-on-med-and-down">
+                    <li><a type="submit" value="Logout" onclick="logout()">Logout</a></li>
+                </ul>
+            </form>
+
+        </div>
+    </nav>
+</nav>
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h1 class="header center orange-text">Not Another Captcha</h1>
+        <div class="row center">
+            <h5 class="header col s12 light">Manage your apps here ( max 5 apps allowed per user )</h5>
+        </div>
+
+        <div class="row center" th:if="${clients.size() < 5}">
+            <form action="#" th:action="@{/create-client}" method="post">
+                <button href="/oauth2/authorization/google" id="generate"
+                        class="btn-large waves-effect waves-light orange">Generate new App
+                </button>
+            </form>
+        </div>
+        <br><br>
+        <br><br>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="section">
+
+        <!--   Icon Section   -->
+        <div class="row">
+
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Client Id</th>
+                    <th>Client Secret</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="e : ${clients}">
+                    <td th:text="${e.clientId}">...</td>
+                    <td th:text="${e.secret}">...</td>
+                    <td>
+                        <form action="#" th:action="@{/delete-client}" method="post">
+                            <input type="hidden" th:value="${e.clientId}" name="clientId">
+                            <button class="btn-small waves-effect waves-light orange" type="submit" value="Delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="col s12">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+                    <h5 class="center">How to use</h5>
+
+                    <p class="light" style="text-align: center">
+
+                        Add the following script to your site:
+
+                        <br>
+                        <code th:text="${tag}"></code>
+
+                        <br>
+                        <br>
+                        Add following element to a form you wish to protect
+
+                        <br>
+                        <code th:text="${element}"></code>
+
+                        <br>
+                        <br>
+
+                        To Validate the captcha on the backend send a POST request with the following format
+                        <br>
+                        <code>https://notanothercaptcha.com/captcha?clientId=YOUR_CLIENT_ID&secret=YOUR_SECRET&captchaId=CAPTCA_ID&response=CAPTCHS_RESPONSE</code>
+                        <br>
+                        <br>
+
+                        <em>CAPTCHA_RESPONSE</em> and <em>CAPTCA_ID</em> will be submitted with your together with your form as <em>nocId</em> and <em>nocResponse</em>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <br><br>
+</div>
+
+<footer class="page-footer orange">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Not Another Captcha</h5>
+                <p class="grey-text text-lighten-4"> Built @ Not Another Hackathon as an absolutely stupid yet totally
+                    sane idea</p>
+
+
+            </div>
+
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="orange-text text-lighten-3" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Timo
+            Bejan</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function logout() {
+        document.getElementById("lform").submit();
+    }
+
+
+</script>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+</body>
+</html>
