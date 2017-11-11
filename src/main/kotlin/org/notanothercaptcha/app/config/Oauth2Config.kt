@@ -23,6 +23,7 @@ class OAuth2LoginConfig : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
 
+        http.csrf().disable()
         http.authorizeRequests().antMatchers("/captcha.js", "/login", "/login-page","/sample").permitAll()
         http.authorizeRequests().antMatchers("/captcha/**").permitAll()
         http
