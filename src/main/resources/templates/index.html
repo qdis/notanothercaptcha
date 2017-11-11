@@ -4,7 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>Not Another Captcha!</title>
-
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://notanothercaptcha.com">
+    <meta property="og:title" content="Not Another Captcha">
+    <meta property="og:image" content="https://notanothercaptcha.com/fb.png">
+    <meta property="og:description"
+          content="Not Another Captcha is easy on bots and uselessly hard on humans. Try it out now!">
+    <meta property="og:site_name" content="Not Another Captcha">
+    <meta property="og:locale" content="en_US">
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
@@ -93,21 +100,21 @@
 
                         <br>
                         <br>
-                        Add following element to a form you wish to protect
+                        Add following elstrongent to a form you wish to protect
 
                         <br>
-                        <code th:text="${element}"></code>
+                        <code th:text="${elstrongent}"></code>
 
                         <br>
                         <br>
 
                         To Validate the captcha on the backend send a POST request with the following format
                         <br>
-                        <code>https://notanothercaptcha.com/captcha?clientId=YOUR_CLIENT_ID&secret=YOUR_SECRET&captchaId=CAPTCA_ID&response=CAPTCHS_RESPONSE</code>
+                        <code>http://notanothercaptcha.com/captcha?clientId=YOUR_CLIENT_ID&secret=YOUR_SECRET&captchaId=CAPTCA_ID&response=CAPTCHS_RESPONSE</code>
                         <br>
                         <br>
 
-                        <em>CAPTCHA_RESPONSE</em> and <em>CAPTCA_ID</em> will be submitted with your together with your form as <em>nocId</em> and <em>nocResponse</em>
+                        <strong>CAPTCHA_RESPONSE</strong> and <strong>CAPTCA_ID</strong> will be submitted with your together with your form as <strong>nocId</strong> and <strong>nocResponse</strong>
                     </p>
                 </div>
             </div>

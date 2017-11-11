@@ -31,7 +31,7 @@ class MainController {
         val clients = appClientRepo.findByUser(authentication.name).collectList().block()
         model.addAttribute("clients", clients)
 
-        model.addAttribute("tag", "<script src=\"https://notanothercaptcha.com/captcha.js\">")
+        model.addAttribute("tag", "<script src=\"http://notanothercaptcha.com/captcha.js\">")
         model.addAttribute("element", "<div class=\"noc\" data-noc-client-id=\"YOUR_CLIENT_ID\"></div>")
 
         return "index"

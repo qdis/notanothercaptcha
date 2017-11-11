@@ -24,7 +24,7 @@ class OAuth2LoginConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
 
         http.csrf().disable()
-        http.authorizeRequests().antMatchers("/captcha.js", "/login", "/login-page","/sample","/favicon.ico").permitAll()
+        http.authorizeRequests().antMatchers("/captcha.js", "/login", "/login-page","/sample","/favicon.ico","/fb.png").permitAll()
         http.authorizeRequests().antMatchers("/captcha/**").permitAll()
         http
                 .authorizeRequests()
