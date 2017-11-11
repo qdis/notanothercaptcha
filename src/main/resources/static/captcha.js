@@ -30,7 +30,7 @@
                     "<h3>Captcha not available</h3>";
             }
         };
-        xhttp.open("GET", "https://notanothercaptcha.com/captcha/generate/"+clientId, true);
+        xhttp.open("GET", "http://notanothercaptcha.com/captcha/generate/"+clientId, true);
         xhttp.send();
 
     }
