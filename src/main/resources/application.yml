@@ -6,6 +6,7 @@ spring:
           google:
             client-id: '1076510421316-eionfqdijn0rj4858e7qlf3s1naue0nm.apps.googleusercontent.com'
             client-secret: 'tBE3KnDNgLdKhHjKh49r8t0F'
+            redirect-uri: 'https://notanothercaptcha.com/login/oauth2/code/google'
 server:
   session:
     persistent: true
